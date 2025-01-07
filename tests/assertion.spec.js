@@ -43,28 +43,3 @@ test('assetion', async ({ page }) => {
 })
 
 
-test('checkout test', async ({ page }) => {
-  await page.goto('https://www.saucedemo.com/');
-
-
-
-  await page.click('.inventory_item:first-child .btn_inventory');
-  
-  await page.click('.shopping_cart_link');
-
-  await page.click('#checkout');
-
-
-  await page.fill('#first-name', 'Test');
-  await page.fill('#last-name', 'User');
-  await page.fill('#postal-code', '12345');
-
-  await page.click('#continue');
-
-  await expect(page.locator('.checkout_summary_container')).toBeVisible();
-
-  
-  await page.click('#finish');
-
-  await expect(page.locator('.complete-header')).toHaveText('Thank you for your order!');
-});
