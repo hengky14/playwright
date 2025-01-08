@@ -28,19 +28,12 @@ export default class newCheckoutAction {
         await this.checkoutButton.click();
     }
 
-    async fillFirstName(firstName) {
+    async addUser(firstName, lastName, postalCode) {
         await this.page.fill(this.newCheckoutLocator.firstNameInput, firstName);
-    }
-
-    async fillLastName(lastName) {
         await this.page.fill(this.newCheckoutLocator.lastNameInput, lastName);
-    }
-
-    
-
-    async fillPostalCode(postalCode) {
         await this.page.fill(this.newCheckoutLocator.postalCodeInput, postalCode);
     }
+
 
     async clickContinue() {
         await this.continueButton.click();
