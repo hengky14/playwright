@@ -1,5 +1,7 @@
 // @ts-check
 const { test, expect } = require('@playwright/test');
+const { default: newLoginAction }  = require('./spec/action/newLoginAction'); 
+const { default: newCheckoutAction }  = require('./spec/action/newCheckoutAction'); 
 
 test('assetion', async ({ page }) => {
     await page.goto('https://www.saucedemo.com/');
@@ -46,4 +48,22 @@ test('assetion', async ({ page }) => {
 
 })
 
+
+test('pmo', async ({ page }) => {
+    const  pmo = new newLoginAction(page);
+    const objCheckout = new newCheckoutAction(page);
+    await pmo.goto();
+    await pmo.login('standard_user', 'secret_sauce');
+
+    await objCheckout.addToCart();
+    await objCheckout.clickCart();
+    await objCheckout.clickCheckout();
+    await objCheckout.fillFirstName('hengky');
+    await objCheckout.fillLastName('reza');
+    await objCheckout.fillPostalCode('55185');
+    await objCheckout.clickContinue();
+    await objCheckout.clickFinish();
+    await objCheckout.thankYouText();
+
+})  
 
