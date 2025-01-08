@@ -7,20 +7,24 @@ test('assetion', async ({ page }) => {
   const getTitle = await page.title();
   await expect(getTitle).toBe('Swag Labs');
 
-  await page.fill('#user-name', 'standard_user');
-  await expect(page.locator('#user-name')).toHaveValue('standard_user');
-  await page.fill('#password', 'secret_sauce');
-  await expect(page.locator('#password')).toHaveValue('secret_sauce');
+
+ const userName = 'standard_user';
+ const password = 'secret_sauce';
+
+  const userNameInput = page.locator('#user-name');
+  await userNameInput.fill(userName);
+  await expect(userNameInput).toHaveValue(userName);
+
+  const passwordInput = page.locator('#password');
+  await passwordInput.fill(password);
+  await expect(passwordInput).toHaveValue(password);
   
   await page.click('#login-button');
 
 
   await page.click('.inventory_item:first-child .btn_inventory');
   
-
   await page.click('.shopping_cart_link');
-
- 
   await page.click('#checkout');
 
 
