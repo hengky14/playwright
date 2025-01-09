@@ -58,7 +58,7 @@ test('pmo', async ({ page }) => {
     await objCheckout.addToCart();
     await objCheckout.clickCart();
     await objCheckout.clickCheckout();
-    await objCheckout.addUser('hengky', 'reza', '55185');
+    await objCheckout.addUser('hengky', 'reza', '12345');
     await objCheckout.clickContinue();
     await objCheckout.clickFinish();
     await objCheckout.thankYouText();

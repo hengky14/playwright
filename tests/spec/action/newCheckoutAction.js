@@ -1,4 +1,5 @@
 import newCheckoutLocator from "../locator/newCheckoutLocator";
+import { expect } from "@playwright/test";
 
 export default class newCheckoutAction {
     constructor(page) {
@@ -30,8 +31,11 @@ export default class newCheckoutAction {
 
     async addUser(firstName, lastName, postalCode) {
         await this.page.fill(this.newCheckoutLocator.firstNameInput, firstName);
+        await expect(this.page.locator(this.newCheckoutLocator.firstNameInput)).toHaveValue('hengky');
         await this.page.fill(this.newCheckoutLocator.lastNameInput, lastName);
+        await expect(this.page.locator(this.newCheckoutLocator.lastNameInput)).toHaveValue('reza');
         await this.page.fill(this.newCheckoutLocator.postalCodeInput, postalCode);
+        await expect(this.page.locator(this.newCheckoutLocator.postalCodeInput)).toHaveValue('12345');
     }
 
 
